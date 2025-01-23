@@ -16,12 +16,12 @@ function $$(selector, context = document) {
 // currentLink?.classList.add('current');
 
 
-// Handle preview v.s deployment difference
+// Handle preview vs. deployment difference
 let pages = [
-  { url: 'portfolio/', title: 'Home' },
-  { url: 'portfolio/projects/', title: 'Projects' },
-  { url: 'portfolio/contact/', title: 'Contact' },
-  { url: 'portfolio/cv/', title: 'CV' },
+  { url: './', title: 'Home' },
+  { url: './projects/', title: 'Projects' },
+  { url: './contact/', title: 'Contact' },
+  { url: './cv/', title: 'CV' },
   { url: 'https://github.com/hgnzheng', title: 'Profile' } // External link
 ];
 
@@ -30,7 +30,7 @@ let nav = document.createElement('nav');
 document.body.prepend(nav);
 
 // Detect if we’re on the home page
-const ARE_WE_HOME = document.documentElement.classList.contains('home');
+const ARE_WE_HOME = location.pathname === '/' || location.pathname.endsWith('/index.html');
 
 // Add links to the navigation menu
 for (let p of pages) {
