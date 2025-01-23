@@ -25,40 +25,27 @@ let pages = [
   { url: 'https://github.com/hgnzheng', title: 'Profile' } // External link
 ];
 
-// Detect if running on GitHub Pages
-const IS_GITHUB_PAGES = location.hostname === 'hgnzheng.github.io';
-const BASE_PATH = IS_GITHUB_PAGES ? '/portfolio/' : '';
+// Determine the root path dynamically
+const ROOT_PATH = location.hostname === 'hgnzheng.github.io' ? '/portfolio/' : '/';
 
-// Dynamically adjust URLs for internal links
+// Adjust URLs for internal links
 pages = pages.map(page => {
-  if (page.url && !page.url.startsWith('http') && !page.url.includes('portfolio')) {
-    // Prepend BASE_PATH only if "portfolio" is not already in the URL
-    return { ...page, url: `${BASE_PATH}${page.url}` };
+  if (page.url && !page.url.startsWith('http') && !page.url.startsWith(ROOT_PATH)) {
+    // Prepend ROOT_PATH only if not already included
+    return { ...page, url: `${ROOT_PATH}${page.url}` };
   }
-  return page; // Leave external links and URLs with "portfolio" unchanged
+  return page; // Leave external links and already-adjusted links unchanged
 });
 
-
-
-// Add navigation menu
-let nav = document.createElement('nav');
+// Create the navigation menu
+const nav = document.createElement('nav');
 document.body.prepend(nav);
 
-// Detect if we’re on the home page
-const ARE_WE_HOME = document.documentElement.classList.contains('home');
-
 // Add links to the navigation menu
-for (let p of pages) {
-  let url = p.url;
-  if (!ARE_WE_HOME && !url.startsWith('http')) {
-    // Adjust relative URLs for non-home pages
-    url = '../' + url;
-  }
-
-  // Create the <a> element
+pages.forEach(page => {
   const a = document.createElement('a');
-  a.href = url;
-  a.textContent = p.title;
+  a.href = page.url;
+  a.textContent = page.title;
 
   // Highlight the current page
   a.classList.toggle(
@@ -67,13 +54,14 @@ for (let p of pages) {
   );
 
   // Open external links in a new tab
-  if (a.host !== location.host) {
+  if (page.url.startsWith('http')) {
     a.target = '_blank';
   }
 
-  // Add the <a> element to <nav>
+  // Add the link to the navigation menu
   nav.append(a);
-}
+});
+
 
 document.body.insertAdjacentHTML(
   'afterbegin',
