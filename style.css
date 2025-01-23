@@ -1,5 +1,11 @@
 :root {
-  --color-accent: oklch(65% 50% 0)
+  --color-accent: oklch(65% 50% 0);
+  --background-light: canvas;
+  --background-dark: canvastext;
+  --text-light: canvastext;
+  --text-dark: canvas;
+  --border-color: oklch(50% 10% 200 / 40%);
+  color-scheme: light dark;
 }
 
 html {
@@ -15,21 +21,21 @@ body {
     margin-inline: max(1em, (100% - 100ch) / 2);
   }
 
-  nav {
-    display: flex;                          /* Use Flexbox */
-    border-bottom-width: 1px;               /* Add a border at the bottom */
-    border-bottom-style: solid;             /* Make the border solid */
-    border-bottom-color: oklch(80% 3% 200)  /* Use a color from the Oklab color space */
-  }
+nav {
+  display: flex;                          /* Use Flexbox */
+  border-bottom-width: 1px;               /* Add a border at the bottom */
+  border-bottom-style: solid;             /* Make the border solid */
+  border-bottom-color: var(--border-color);
+}
 
 /* All links in the nav */
-  nav a {
-    flex: 1;                 /* Make each link take up equal space */
-    text-decoration: none;   /* Remove default underline */
-    color: inherit;          /* Inherit the color from the parent (body/nav) */
-    text-align: center;      /* Center the link text in its "box" */
-    padding: 0.5em;          /* Spacing around the text */
-  }
+nav a {
+  flex: 1;                 /* Make each link take up equal space */
+  text-decoration: none;   /* Remove default underline */
+  color: inherit;          /* Inherit the color from the parent (body/nav) */
+  text-align: center;      /* Center the link text in its "box" */
+  padding: 0.5em;          /* Spacing around the text */
+}
 
 /* Current page link */
 nav a.current {
@@ -39,7 +45,9 @@ nav a.current {
 
 nav a:hover {
   border-bottom: 0.4em solid var(--color-accent);                        /* Add a thicker border at the bottom */
-  background-color: oklch(from var(--color-accent) 95% 5% h)             /* Use a color from the Oklab color space */
+  /* background-color: oklch(from var(--color-accent) 95% 5% h)             Use a color from the Oklab color space */
+  /* Updated one */
+  background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
 }
 
 /* Form container */
@@ -174,4 +182,16 @@ article h3 {
 
 article p {
   margin: 0.5em 0;
+}
+
+.color-scheme {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 80%;
+  font-family: inherit;
+}
+
+.color-scheme select {
+  font-size: inherit;
 }
