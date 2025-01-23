@@ -18,34 +18,32 @@ function $$(selector, context = document) {
 
 // Handle preview v.s deployment difference
 let pages = [
-  { url: '', title: 'Home' },
-  { url: 'projects/', title: 'Projects' },
-  { url: 'contact/', title: 'Contact' },
-  { url: 'cv/', title: 'CV' },
+  { url: 'portfolio/', title: 'Home' },
+  { url: 'portfolio/projects/', title: 'Projects' },
+  { url: 'portfolio/contact/', title: 'Contact' },
+  { url: 'portfolio/cv/', title: 'CV' },
   { url: 'https://github.com/hgnzheng', title: 'Profile' } // External link
 ];
 
-// Determine the root path dynamically
-const ROOT_PATH = location.hostname === 'hgnzheng.github.io' ? '/portfolio/' : '/';
-
-// Adjust URLs for internal links
-pages = pages.map(page => {
-  if (page.url && !page.url.startsWith('http') && !page.url.startsWith(ROOT_PATH)) {
-    // Prepend ROOT_PATH only if not already included
-    return { ...page, url: `${ROOT_PATH}${page.url}` };
-  }
-  return page; // Leave external links and already-adjusted links unchanged
-});
-
-// Create the navigation menu
-const nav = document.createElement('nav');
+// Add navigation menu
+let nav = document.createElement('nav');
 document.body.prepend(nav);
 
+// Detect if we’re on the home page
+const ARE_WE_HOME = document.documentElement.classList.contains('home');
+
 // Add links to the navigation menu
-pages.forEach(page => {
+for (let p of pages) {
+  let url = p.url;
+  if (!ARE_WE_HOME && !url.startsWith('http')) {
+    // Adjust relative URLs for non-home pages
+    url = '../' + url;
+  }
+
+  // Create the <a> element
   const a = document.createElement('a');
-  a.href = page.url;
-  a.textContent = page.title;
+  a.href = url;
+  a.textContent = p.title;
 
   // Highlight the current page
   a.classList.toggle(
@@ -54,14 +52,13 @@ pages.forEach(page => {
   );
 
   // Open external links in a new tab
-  if (page.url.startsWith('http')) {
+  if (a.host !== location.host) {
     a.target = '_blank';
   }
 
-  // Add the link to the navigation menu
+  // Add the <a> element to <nav>
   nav.append(a);
-});
-
+}
 
 document.body.insertAdjacentHTML(
   'afterbegin',
