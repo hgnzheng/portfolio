@@ -18,23 +18,26 @@ function $$(selector, context = document) {
 
 // Handle preview v.s deployment difference
 let pages = [
-  { url: '', title: 'Home' }, // Home stays the same
+  { url: '', title: 'Home' },
   { url: 'projects/', title: 'Projects' },
   { url: 'contact/', title: 'Contact' },
   { url: 'cv/', title: 'CV' },
-  { url: 'https://github.com/hgnzheng', title: 'Profile' } // External link
+  { url: 'https://github.com/hgnzheng', title: 'Profile' }, // External link
 ];
 
-// Detect whether we're running locally or on GitHub Pages
-const BASE_PATH = location.hostname === 'hgnzheng.github.io' ? 'portfolio/' : '';
+// Detect if running on GitHub Pages
+const IS_GITHUB_PAGES = location.hostname === 'hgnzheng.github.io';
+const BASE_PATH = IS_GITHUB_PAGES ? '/portfolio/' : '';
 
-// Dynamically prepend the base path to internal links
+// Dynamically adjust URLs for internal links
 pages = pages.map(page => {
   if (page.url && !page.url.startsWith('http')) {
+    // Prepend BASE_PATH to all internal links, including Home
     return { ...page, url: `${BASE_PATH}${page.url}` };
   }
-  return page; // Leave Home and external links unchanged
+  return page; // Leave external links unchanged
 });
+
 
 // Add navigation menu
 let nav = document.createElement('nav');
