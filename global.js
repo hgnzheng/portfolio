@@ -18,32 +18,23 @@ function $$(selector, context = document) {
 
 // Detect if we are running locally or on GitHub Pages
 const IS_LOCAL = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+const BASE_PATH = IS_LOCAL ? '' : '/portfolio'; // Use '' for local and '/portfolio' for GitHub Pages
 
 // Handle preview vs. deployment difference
 let pages = [
-  { url: '/portfolio/', title: 'Home' },
-  { url: '/portfolio/projects/', title: 'Projects' },
-  { url: '/portfolio/contact/', title: 'Contact' },
-  { url: '/portfolio/cv/', title: 'CV' },
+  { url: `${BASE_PATH}/`, title: 'Home' },
+  { url: `${BASE_PATH}/projects/`, title: 'Projects' },
+  { url: `${BASE_PATH}/contact/`, title: 'Contact' },
+  { url: `${BASE_PATH}/cv/`, title: 'CV' },
   { url: 'https://github.com/hgnzheng', title: 'Profile' } // External link
 ];
-
-// Adjust URLs for local preview (remove "portfolio")
-if (IS_LOCAL) {
-  pages = pages.map((page) => {
-    if (page.url.startsWith('/portfolio/')) {
-      return { ...page, url: page.url.replace('/portfolio/', '') };
-    }
-    return page;
-  });
-}
 
 // Add navigation menu
 let nav = document.createElement('nav');
 document.body.prepend(nav);
 
 // Detect if we’re on the home page
-const ARE_WE_HOME = document.documentElement.classList.contains('home');
+const ARE_WE_HOME = location.pathname === `${BASE_PATH}/` || location.pathname === `${BASE_PATH}/index.html`;
 
 // Add links to the navigation menu
 for (let p of pages) {
@@ -51,7 +42,7 @@ for (let p of pages) {
 
   if (!ARE_WE_HOME && !url.startsWith('http')) {
     // Adjust relative URLs for non-home pages
-    url = '../' + url.replace('./', '');
+    url = '../' + url.replace(BASE_PATH + '/', '');
   }
 
   // Create the <a> element
@@ -73,7 +64,6 @@ for (let p of pages) {
   // Add the <a> element to <nav>
   nav.append(a);
 }
-
 
 document.body.insertAdjacentHTML(
   'afterbegin',
