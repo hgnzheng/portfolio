@@ -15,13 +15,26 @@ function $$(selector, context = document) {
 // // Add the class 'current' to the current link with error handling
 // currentLink?.classList.add('current');
 
+
+// Handle preview v.s deployment difference
 let pages = [
-  { url: 'portfolio/', title: 'Home' },
-  { url: 'portfolio/projects/', title: 'Projects' },
-  { url: 'portfolio/contact/', title: 'Contact' },
-  { url: 'portfolio/cv/', title: 'CV' },
-  { url: 'https://github.com/hgnzheng', title: 'Profile' },
+  { url: '', title: 'Home' }, // Home stays the same
+  { url: 'projects/', title: 'Projects' },
+  { url: 'contact/', title: 'Contact' },
+  { url: 'cv/', title: 'CV' },
+  { url: 'https://github.com/hgnzheng', title: 'Profile' } // External link
 ];
+
+// Detect whether we're running locally or on GitHub Pages
+const BASE_PATH = location.hostname === 'hgnzheng.github.io' ? 'portfolio/' : '';
+
+// Dynamically prepend the base path to internal links
+pages = pages.map(page => {
+  if (page.url && !page.url.startsWith('http')) {
+    return { ...page, url: `${BASE_PATH}${page.url}` };
+  }
+  return page; // Leave Home and external links unchanged
+});
 
 // Add navigation menu
 let nav = document.createElement('nav');
