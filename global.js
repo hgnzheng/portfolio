@@ -22,7 +22,7 @@ let pages = [
   { url: 'projects/', title: 'Projects' },
   { url: 'contact/', title: 'Contact' },
   { url: 'cv/', title: 'CV' },
-  { url: 'https://github.com/hgnzheng', title: 'Profile' }, // External link
+  { url: 'https://github.com/hgnzheng', title: 'Profile' } // External link
 ];
 
 // Detect if running on GitHub Pages
@@ -31,12 +31,13 @@ const BASE_PATH = IS_GITHUB_PAGES ? '/portfolio/' : '';
 
 // Dynamically adjust URLs for internal links
 pages = pages.map(page => {
-  if (page.url && !page.url.startsWith('http') && !page.url.startsWith(BASE_PATH)) {
-    // Prepend BASE_PATH only if it is not already present
+  if (page.url && !page.url.startsWith('http') && !page.url.includes('portfolio')) {
+    // Prepend BASE_PATH only if "portfolio" is not already in the URL
     return { ...page, url: `${BASE_PATH}${page.url}` };
   }
-  return page; // Leave external links unchanged
+  return page; // Leave external links and URLs with "portfolio" unchanged
 });
+
 
 
 // Add navigation menu
