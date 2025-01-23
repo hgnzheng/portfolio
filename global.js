@@ -37,7 +37,7 @@ for (let p of pages) {
   let url = p.url;
   if (!ARE_WE_HOME && !url.startsWith('http')) {
     // Adjust relative URLs for non-home pages
-    url = '../' + url;
+    url = '../' + url.replace('./', '');
   }
 
   // Create the <a> element
