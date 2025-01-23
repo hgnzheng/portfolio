@@ -42,7 +42,7 @@ for (let p of pages) {
 
   if (!ARE_WE_HOME && !url.startsWith('http')) {
     // Adjust relative URLs for non-home pages
-    url = '../' + url.replace(BASE_PATH + '/', '');
+    url = '..' + url;
   }
 
   // Create the <a> element
