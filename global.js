@@ -16,10 +16,10 @@ function $$(selector, context = document) {
 // currentLink?.classList.add('current');
 
 let pages = [
-  { url: '', title: 'Home' },
-  { url: 'projects/', title: 'Projects' },
-  { url: 'contact/', title: 'Contact' },
-  { url: 'cv/', title: 'CV' },
+  { url: 'portfolio/', title: 'Home' },
+  { url: 'portfolio/projects/', title: 'Projects' },
+  { url: 'portfolio/contact/', title: 'Contact' },
+  { url: 'portfolio/cv/', title: 'CV' },
   { url: 'https://github.com/hgnzheng', title: 'Profile' },
 ];
 
