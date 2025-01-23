@@ -16,25 +16,39 @@ function $$(selector, context = document) {
 // currentLink?.classList.add('current');
 
 
+// Detect if we are running locally or on GitHub Pages
+const IS_LOCAL = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+
 // Handle preview vs. deployment difference
 let pages = [
-  { url: './', title: 'Home' },
-  { url: './projects/', title: 'Projects' },
-  { url: './contact/', title: 'Contact' },
-  { url: './cv/', title: 'CV' },
+  { url: '/portfolio/', title: 'Home' },
+  { url: '/portfolio/projects/', title: 'Projects' },
+  { url: '/portfolio/contact/', title: 'Contact' },
+  { url: '/portfolio/cv/', title: 'CV' },
   { url: 'https://github.com/hgnzheng', title: 'Profile' } // External link
 ];
+
+// Adjust URLs for local preview (remove "portfolio")
+if (IS_LOCAL) {
+  pages = pages.map((page) => {
+    if (page.url.startsWith('/portfolio/')) {
+      return { ...page, url: page.url.replace('/portfolio/', '') };
+    }
+    return page;
+  });
+}
 
 // Add navigation menu
 let nav = document.createElement('nav');
 document.body.prepend(nav);
 
 // Detect if we’re on the home page
-const ARE_WE_HOME = location.pathname === '/' || location.pathname.endsWith('/index.html');
+const ARE_WE_HOME = document.documentElement.classList.contains('home');
 
 // Add links to the navigation menu
 for (let p of pages) {
   let url = p.url;
+
   if (!ARE_WE_HOME && !url.startsWith('http')) {
     // Adjust relative URLs for non-home pages
     url = '../' + url.replace('./', '');
@@ -59,6 +73,7 @@ for (let p of pages) {
   // Add the <a> element to <nav>
   nav.append(a);
 }
+
 
 document.body.insertAdjacentHTML(
   'afterbegin',
