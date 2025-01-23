@@ -41,8 +41,9 @@ for (let p of pages) {
   let url = p.url;
 
   if (!ARE_WE_HOME && !url.startsWith('http')) {
-    // Adjust relative URLs for non-home pages
-    url = '..' + url;
+    // For non-home pages, adjust relative URLs for proper navigation
+    const currentDir = location.pathname.replace(/\/[^/]*$/, ''); // Remove the last segment of the current path
+    url = new URL(url, `${location.origin}${currentDir}/`).href; // Resolve the absolute URL
   }
 
   // Create the <a> element
@@ -50,20 +51,20 @@ for (let p of pages) {
   a.href = url;
   a.textContent = p.title;
 
-  // Highlight the current page
-  a.classList.toggle(
-    'current',
-    a.host === location.host && a.pathname === location.pathname
-  );
-
-  // Open external links in a new tab
-  if (a.host !== location.host) {
-    a.target = '_blank';
-  }
-
   // Add the <a> element to <nav>
   nav.append(a);
 }
+
+// Get all nav links
+let navLinks = $$("nav a");
+
+// Find the link to the current page
+let currentLink = navLinks.find(
+  (a) => a.host === location.host && a.pathname === location.pathname
+);
+
+// Add the current class to the current page link
+currentLink?.classList.add('current');
 
 document.body.insertAdjacentHTML(
   'afterbegin',
