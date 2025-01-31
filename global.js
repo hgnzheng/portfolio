@@ -149,6 +149,7 @@ export async function fetchJSON(url) {
   }
 }
 
+
 export function renderProjects(projects, containerElement, headingLevel = 'h2') {
   // Check if the projects is an array and the container element exists
   if (!Array.isArray(projects) || !containerElement) return;
@@ -156,19 +157,12 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
   // Clear existing static projects
   containerElement.innerHTML = '';
 
-  const IMAGE_BASE = IS_LOCAL ? '../project_images/' : '/portfolio/project_images/';
-
 
   projects.forEach((project) => {
     const article = document.createElement('article');
-    // article.innerHTML = `
-    //   <${headingLevel}>${project.title}</${headingLevel}>
-    //   <img src="${project.image}" alt="${project.title}">
-    //   <p>${project.description}</p>
-    // `;
     article.innerHTML = `
       <${headingLevel}>${project.title}</${headingLevel}>
-      <img src="${IMAGE_BASE + project.image.split('/').pop()}" alt="${project.title}">
+      <img src="${project.image}" alt="${project.title}">
       <p>${project.description}</p>
     `;
     containerElement.appendChild(article);

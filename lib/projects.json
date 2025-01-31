@@ -2,7 +2,7 @@
     {
         "title": "CSE234: AutoDiff, Transformer Training, and Fused Operations",
         "year": "2025",
-        "image": "/portfolio/project_images/dsc106_project1.png",
+        "image": "../project_images/cse234_pa1.png",
         "description": "This project implements an automatic differentiation framework in Python. It focuses on constructing computational graphs and efficiently computing gradients. The project includes forward and backward differentiation for individual nodes and entire computation graphs, along with optimizations through fused operations."
     },
     {
