@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const projectsContainer = document.querySelector('.projects');
 
     if (projectsContainer) {
-        const projects = await fetchJSON('../lib/projects.json');
+        const projects = await fetchJSON('./lib/projects.json');
         // Get the latest 3 projects
         const latestProjects = projects.slice(0, 3);
         // Render using h2 as the heading level
