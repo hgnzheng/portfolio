@@ -167,17 +167,16 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
     // `;
 
     // Fix relative path issue on the home page
-    
-    // Adjust image path based on current page location and environment
     let imagePath;
+    
     if (location.pathname.includes('/projects/')) {
-      // For projects page
-      imagePath = IS_LOCAL ? project.image : project.image.replace('../', `${BASE_PATH}/`);
+      // For projects page, keep the relative path as is
+      imagePath = project.image;
     } else {
       // For home page
       imagePath = IS_LOCAL ? 
-        project.image.replace('../', '') : 
-        `${BASE_PATH}/${project.image.replace('../', '')}`;
+        project.image.replace('../', '') : // local: remove '../'
+        `${BASE_PATH}/${project.image.replace('../', '')}`; // deployed: add BASE_PATH and remove '../'
     }
       
     article.innerHTML = `
