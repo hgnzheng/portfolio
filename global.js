@@ -160,9 +160,22 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
 
   projects.forEach((project) => {
     const article = document.createElement('article');
+    // article.innerHTML = `
+    //   <${headingLevel}>${project.title}</${headingLevel}>
+    //   <img src="${project.image}" alt="${project.title}">
+    //   <p>${project.description}</p>
+    // `;
+
+    // Fix relative path issue on the home page
+    
+    // Adjust image path based on current page location
+    const imagePath = location.pathname.includes('/projects/') 
+      ? project.image // Keep relative path for projects page
+      : project.image.replace('../', ''); // Remove '../' for home page
+      
     article.innerHTML = `
       <${headingLevel}>${project.title}</${headingLevel}>
-      <img src="${project.image}" alt="${project.title}">
+      <img src="${imagePath}" alt="${project.title}">
       <p>${project.description}</p>
     `;
     containerElement.appendChild(article);
