@@ -6,6 +6,7 @@
     <title>Hargen Zheng: Personal site and portfolio</title>
     <link rel="stylesheet" href="style.css">
     <script type="module" src="global.js"></script>
+    <script src="index.js" type="module" defer></script>
 </head>
 <body>
     <!-- <nav>
@@ -18,5 +19,33 @@
     <h1>Hargen Zheng</h1>
     <p>I am a junior at UC San Diego, double majoring in Data Science and Mathematics-Computer Science.</p>
     <img src="images/hfls_snow.jpg" alt="Snow at Hangzhou Foreign Languages School, taken in 2022." width="650">
+
+    <h2>Latest Projects</h2>
+    <div class="projects">
+        <!-- Dynamically added content will appear here -->
+    </div>
+
+    <section id="profile-stats">
+        <h2>GitHub Stats</h2>
+        <div class="stats-grid">
+            <div class="stat">
+                <p class="stat-title">FOLLOWERS</p>
+                <p class="stat-value" id="followers">--</p>
+            </div>
+            <div class="stat">
+                <p class="stat-title">FOLLOWING</p>
+                <p class="stat-value" id="following">--</p>
+            </div>
+            <div class="stat">
+                <p class="stat-title">PUBLIC REPOS</p>
+                <p class="stat-value" id="public-repos">--</p>
+            </div>
+            <div class="stat">
+                <p class="stat-title">PUBLIC GISTS</p>
+                <p class="stat-value" id="public-gists">--</p>
+            </div>
+        </div>
+    </section>
+
 </body>
 </html>

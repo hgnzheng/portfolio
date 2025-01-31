@@ -1,0 +1,20 @@
+[
+    {
+        "title": "CSE234: AutoDiff, Transformer Training, and Fused Operations",
+        "year": "2025",
+        "image": "../project_images/cse234_pa1.png",
+        "description": "This project implements an automatic differentiation framework in Python. It focuses on constructing computational graphs and efficiently computing gradients. The project includes forward and backward differentiation for individual nodes and entire computation graphs, along with optimizations through fused operations."
+    },
+    {
+        "title": "DSC106: Exploratory Data Visualization",
+        "year": "2025",
+        "image": "../project_images/dsc106_project1.png",
+        "description": "This project explores weather pattern similarities across major U.S. cities using a network graph visualization. By analyzing sunshine hours and rainfall data, the graph highlights pairwise similarities between cities, with edge thickness and transparency representing the strength of the similarity."
+    },
+    {
+        "title": "CSE151B: Mini-batch Stochastic Gradient Descent on MNIST",
+        "year": "2024",
+        "image": "../project_images/cse151b_pa1.png",
+        "description": "Implemented and analyzed neural networks for handwritten digit recognition using MNIST. Compared softmax regression and multi-layer networks, exploring hyperparameters, momentum, regularization (L1/L2), and activation functions. Built forward/backpropagation from scratch and optimized with mini-batch stochastic gradient descent."
+    }
+]
