@@ -156,11 +156,19 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
   // Clear existing static projects
   containerElement.innerHTML = '';
 
+  const IMAGE_BASE = IS_LOCAL ? '../project_images/' : '/portfolio/project_images/';
+
+
   projects.forEach((project) => {
     const article = document.createElement('article');
+    // article.innerHTML = `
+    //   <${headingLevel}>${project.title}</${headingLevel}>
+    //   <img src="${project.image}" alt="${project.title}">
+    //   <p>${project.description}</p>
+    // `;
     article.innerHTML = `
       <${headingLevel}>${project.title}</${headingLevel}>
-      <img src="${project.image}" alt="${project.title}">
+      <img src="${IMAGE_BASE + project.image.split('/').pop()}" alt="${project.title}">
       <p>${project.description}</p>
     `;
     containerElement.appendChild(article);
