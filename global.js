@@ -18,7 +18,7 @@ function $$(selector, context = document) {
 
 // Detect if we are running locally or on GitHub Pages
 const IS_LOCAL = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
-const BASE_PATH = IS_LOCAL ? '' : '/portfolio'; // Use '' for local and '/portfolio' for GitHub Pages
+const BASE_PATH = IS_LOCAL ? '' : '/portfolio';
 
 // Handle preview vs. deployment difference
 let pages = [
@@ -168,10 +168,17 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
 
     // Fix relative path issue on the home page
     
-    // Adjust image path based on current page location
-    const imagePath = location.pathname.includes('/projects/') 
-      ? project.image // Keep relative path for projects page
-      : project.image.replace('../', ''); // Remove '../' for home page
+    // Adjust image path based on current page location and environment
+    let imagePath;
+    if (location.pathname.includes('/projects/')) {
+      // For projects page
+      imagePath = IS_LOCAL ? project.image : project.image.replace('../', `${BASE_PATH}/`);
+    } else {
+      // For home page
+      imagePath = IS_LOCAL ? 
+        project.image.replace('../', '') : 
+        `${BASE_PATH}/${project.image.replace('../', '')}`;
+    }
       
     article.innerHTML = `
       <${headingLevel}>${project.title}</${headingLevel}>
@@ -179,7 +186,7 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
       <p>${project.description}</p>
     `;
     containerElement.appendChild(article);
-  })
+  });
 
   // Update project count
   const countElement = document.querySelector('.projects-title');
