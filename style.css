@@ -233,6 +233,15 @@ article p {
   line-height: 1.2;
 }
 
+/* Lab 5: Add year information */
+.project-year {
+  font-family: Baskerville, serif;
+  font-variant-numeric: oldstyle-nums;
+  color: gray;
+  font-size: 1.2em;
+  margin-top: 0.5em;
+}
+
 /* Lab 5: Add pie-chart */
 svg {
   max-width: 20em;

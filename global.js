@@ -178,12 +178,16 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
         project.image.replace('../', '') : // local: remove '../'
         `${BASE_PATH}/${project.image.replace('../', '')}`; // deployed: add BASE_PATH and remove '../'
     }
-      
+
     article.innerHTML = `
       <${headingLevel}>${project.title}</${headingLevel}>
       <img src="${imagePath}" alt="${project.title}">
-      <p>${project.description}</p>
+      <div class="project-info">
+        <p>${project.description}</p>
+        <p class="project-year">${project.year}</p>
+      </div>
     `;
+
     containerElement.appendChild(article);
   });
 

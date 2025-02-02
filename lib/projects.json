@@ -12,9 +12,81 @@
         "description": "This project explores weather pattern similarities across major U.S. cities using a network graph visualization. By analyzing sunshine hours and rainfall data, the graph highlights pairwise similarities between cities, with edge thickness and transparency representing the strength of the similarity."
     },
     {
+        "title": "CSE151B: Text-to-Audio Machine Translation",
+        "year": "2024",
+        "image": "../project_images/cse151b_pa5.png",
+        "description": "Built a multilingual text translation pipeline using a Transformer-based model and fine-tuned Google T5 for English-Chinese translation. Integrated knowledge distillation for model optimization and used the Bark model for seamless text-to-audio conversion. Evaluated translation performance with the BLEU metric."
+    },
+    {
+        "title": "ECE273: Learning-Rate-Free Optimization with D-Adaptation",
+        "year": "2024",
+        "image": "../project_images/ece273_project.png",
+        "description": "Implemented and analyzed D-Adaptation, a novel learning-rate-free optimization technique that adaptively estimates step sizes in convex minimization problems. Applied D-Adaptation to gradient descent, dual averaging, SGD, and Adam, demonstrating comparable performance to hand-tuned learning rates."
+    },
+    {
+        "title": "CSE151B: BERT and Contrastive Learning for Intent Classification",
+        "year": "2024",
+        "image": "../project_images/cse151b_pa4.png",
+        "description": "Applied fine-tuned BERT models and contrastive learning (SupCon, SimCLR) to classify user intent on the Amazon Massive Intent dataset. Optimized training with Layer-Wise Learning Rate Decay (LLRD) and warm-up steps, achieving 88% test accuracy. Found that contrastive learning did not improve performance over baseline BERT."
+    },
+    {
+        "title": "CSE151B: LSTM for Music Generation",
+        "year": "2024",
+        "image": "../project_images/cse151b_pa3.png",
+        "description": "Trained an LSTM-based model to generate music in ABC notation. Applied teacher forcing and tuned hyperparameters such as dropout, temperature, and hidden neurons to improve output diversity. Conducted feature evaluation with activation heatmaps to interpret learned patterns in music generation."
+    },
+    {
+        "title": "CSE151B: Semantic Segmentation with CNNs",
+        "year": "2024",
+        "image": "../project_images/cse151b_pa2.png",
+        "description": "Developed and benchmarked CNN architectures for semantic segmentation on PASCAL VOC-2007. Implemented a baseline encoder-decoder model and improved performance with data augmentation, weighted cross-entropy, and learning rate scheduling. Compared results with FCN ResNet-101 and UNet, achieving an IoU of 0.07 and pixel accuracy of 75.4%."
+    },
+    {
         "title": "CSE151B: Mini-batch Stochastic Gradient Descent on MNIST",
         "year": "2024",
         "image": "../project_images/cse151b_pa1.png",
         "description": "Implemented and analyzed neural networks for handwritten digit recognition using MNIST. Compared softmax regression and multi-layer networks, exploring hyperparameters, momentum, regularization (L1/L2), and activation functions. Built forward/backpropagation from scratch and optimized with mini-batch stochastic gradient descent."
+    },
+    {
+        "title": "CSE251A: Optimizing Logistic Regression with Coordinate Descent",
+        "year": "2024",
+        "image": "../project_images/cse251a_project2.png",
+        "description": "Implemented a coordinate descent algorithm for logistic regression on the UCI Wine dataset, selecting updates based on the steepest absolute gradient. Achieved a final loss of 0.02204 after 50,000 epochs, improving over random coordinate selection."
+    },
+    {
+        "title": "CSE251A: Efficient 1-Nearest Neighbor Classification on MNIST",
+        "year": "2024",
+        "image": "../project_images/cse251a_project1.png",
+        "description": "Explored prototype selection methods to speed up 1-NN classification on MNIST while maintaining accuracy. Techniques included K-Means clustering, Edited Nearest Neighbors (ENN), Repeated ENN, and AllKNN. Achieved 97% accuracy with reduced computation time compared to brute-force 1-NN."
+    },
+    {
+        "title": "CSE158: Game Recommendation",
+        "year": "2023",
+        "image": "../project_images/cse158.png",
+        "description": "Implemented a Bayesian Personalized Ranking model for play prediction and ensembled with a popularity-based method. Developed a Latent Factor Model with bias terms for playtime prediction. Achieved top 2% (11/603) in play prediction and top 8% (44/603) in playtime prediction on the course leaderboard."
+    },
+    {
+        "title": "ACM AI: BERT for MBTI Personality Classification",
+        "year": "2023",
+        "image": "../project_images/acm_ai.png",
+        "description": "Applied transfer learning on a pre-trained BERT model for MBTI classification, fine-tuning all parameters on 6,928 training examples and optimizing hyperparameters for improved performance. The final model achieved 94.79% accuracy. Deployed a Streamlit app that predicts the three most likely personality types based on a user's text input."
+    },
+    {
+        "title": "CS188: Reinforcement Learning for Pacman",
+        "year": "2023",
+        "image": "../project_images/cs188_project5.png",
+        "description": "Implemented reinforcement learning algorithms to train agents in different environments. They apply value iteration to solve Markov Decision Processes (MDPs) and implement Q-learning for adaptive decision-making. The agents learn optimal policies through exploration and exploitation. These techniques are used to control a simulated robot and guide Pac-Man in navigating mazes."
+    },
+    {
+        "title": "CS188: Probabilistic Inference for Pacman",
+        "year": "2023",
+        "image": "../project_images/cs188_project34.png",
+        "description": "Designed Pac-Man agents that utilize probabilistic models to track and capture invisible ghosts. By implementing Bayesian networks and Hidden Markov Models (HMMs), the agents infer the probable locations of ghosts based on noisy sensor data. Exact inference is performed using variable elimination techniques, while approximate inference employs particle filtering methods."
+    },
+    {
+        "title": "CS188: Single and Multi-Agent Search",
+        "year": "2023",
+        "image": "../project_images/cs188_project12.png",
+        "description": "Implemented search algorithms (DFS, BFS, UCS, A*) and heuristic design to navigate Pac-Man efficiently. The project extends to adversarial planning, where Pac-Man competes against ghosts using the Minimax algorithm and Alpha-Beta pruning."
     }
 ]
