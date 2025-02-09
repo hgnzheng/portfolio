@@ -16,3 +16,8 @@
     git add -f meta/loc.csv
     git commit -m "Update code statistics" || echo "No changes to commit"
     git push
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
