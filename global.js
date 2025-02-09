@@ -26,6 +26,7 @@ let pages = [
   { url: `${BASE_PATH}/projects/`, title: 'Projects' },
   { url: `${BASE_PATH}/contact/`, title: 'Contact' },
   { url: `${BASE_PATH}/cv/`, title: 'CV' },
+  { url: `${BASE_PATH}/meta/`, title: 'Meta' }, // Add a new bar for the Meta page (Lab 6)
   { url: 'https://github.com/hgnzheng', title: 'Profile' } // External link
 ];
 

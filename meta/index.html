@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meta</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="stylesheet" href="../style.css" />
+    <script type="module" src="../global.js"></script>
+</head>
+<body>
+    <h1 class="meta_title">Summary</h1>
+    <div class="stats-container" id="stats">
+    <!-- Stats will be dynamically inserted -->
+    </div>
+    
+    <h2>Commits by time of day</h2>
+    <div id="chart"></div>
+
+    <dl id="commit-tooltip" class="info tooltip" hidden>
+        <dt>Commit</dt>
+        <dd>
+            <a href="" id="commit-link" target="_blank"></a>
+        </dd>
+
+        <dt>Date</dt>
+        <dd id="commit-date"></dd>
+
+        <dt>Time</dt>
+        <dd id="commit-time"></dd>
+
+        <dt>Author</dt>
+        <dd id="commit-author"></dd>
+
+        <dt>Lines Edited</dt>
+        <dd id="commit-lines"></dd>
+    </dl>
+
+    <div id="language-breakdown-container">
+        <p id="selection-count">No commits selected</p>
+        <div id="language-breakdown" class="stats-container"></div>
+    </div>     
+    
+    <script src="main.js" type="module"></script>
+</body>
+</html>
